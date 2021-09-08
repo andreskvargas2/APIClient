@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>Facturas</h2>
+<p>
+    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalNuevaFactura" data-placement="bottom">Agregar Nueva Factura</button>
+</p>
+<table class="table-striped" id="listFacturas">
+    <thead>
+        <tr>
+            <th>IdFactura</th>
+            <th>NumeroFactura</th>
+            <th>Fecha</th>
+            <th>TipoDePago</th>
+            <th>DocumentoCliente</th>
+            <th>NombreCliente</th>
+            <th>Subtotal</th>
+            <th>Descuento</th>
+            <th>Iva</th>
+            <th>TotalDescuento</th>
+            <th>TotalImpuesto</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var factura in Model)
+        {
+            <tr>
+                <td>@factura.IdFactura</td>
+                <td>@factura.NumeroFactura</td>
+                <td>@factura.Fecha</td>
+                <td>@factura.TipoDePago</td>
+                <td>@factura.DocumentoCliente</td>
+                <td>@factura.NombreCliente</td>
+                <td>@factura.Subtotal</td>
+                <td>@factura.Descuento</td>
+                <td>@factura.Iva</td>
+                <td>@factura.TotalDescuento</td>
+                <td>@factura.TotalImpuesto</td>
+                <td>@factura.Total</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+
+<!--MODAL PARA AGREGAR NUEVA FACTURA-->
+<div class="modal fade" id="modalNuevaFactura">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #3366CC;color: white;">
+                <button type="button" class="close" style="color:white" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" align="center">Ingrese datos factura</h4>
+            </div>
+            
+                <div class="modal-body">
+                    @Html.Partial("_NuevaFactura")
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+                </div>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#listFacturas').DataTable({
+            "language": {
+                "url": "/Scripts/Spanish.json"
+            }, "order": [[0, "desc"]]
+        });
+    });
+
+</script>

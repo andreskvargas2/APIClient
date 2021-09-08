@@ -1,0 +1,2 @@
+C:\Users\usuario\source\repos\APICliente\obj\Release\APICliente.csprojAssemblyReference.cache
+C:\Users\usuario\source\repos\APICliente\obj\Release\APICliente.csproj.CoreCompileInputs.cache
